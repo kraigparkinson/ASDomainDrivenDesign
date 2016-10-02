@@ -26,11 +26,6 @@ script AbstractSpecification
 	property parent : Specification
 	property name : "AbstractSpecification"
 	
-	on constructSpecification()
-		copy me to aSpec
-		return aSpec
-	end constructSpecification
-	
 	on andSpec(other)	
 		return makeAndSpecification(me, other)
 	end andSpec

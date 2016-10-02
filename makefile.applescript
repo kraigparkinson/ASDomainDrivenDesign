@@ -29,7 +29,10 @@ script BuildDDD
 	property name : "ddd"
 	property description : "Build ASDomainDrivenDesign"
 	
-	makeScriptBundle from "src/ASDomainDrivenDesign.applescript" at "build" with overwriting
+	property sourceDir : "src/"
+	property destinationDir : "build/Script Libraries/com.kraigparkinson"
+	
+	makeScriptBundle from joinPath(sourceDir, "ASDomainDrivenDesign.applescript") at destinationDir with overwriting
 end script
 
 script build
@@ -111,7 +114,7 @@ script installScriptLibraries
 	end installWithOverwriteAlert
 	
 	tell BuildDDD to exec:{}
-	installWithOverwriteAlert("ASDomainDrivenDesign", "com.kraigparkinson")	
+	installWithOverwriteAlert("Script Libraries/com.kraigparkinson/ASDomainDrivenDesign", "com.kraigparkinson")	
 end script
 
 script install
