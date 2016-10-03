@@ -56,7 +56,7 @@ script |ASDomainDrivenDesign|
 	
 	on trueSpec()
 		script TrueSpecification
-			property parent : ddd's AbstractSpecification 
+			property parent : ddd's DefaultSpecification 
 			on isSatisfiedBy(object)
 				return true
 			end isSatisfiedBy
@@ -66,7 +66,7 @@ script |ASDomainDrivenDesign|
 	
 	on falseSpec()
 		script FalseSpecification
-			property parent : ddd's AbstractSpecification
+			property parent : ddd's DefaultSpecification
 			on isSatisfiedBy(object)
 				return false
 			end isSatisfiedBy

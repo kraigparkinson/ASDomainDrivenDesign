@@ -7,9 +7,10 @@ property id : "com.kraigparkinson.ASDomainDrivenDesign"
 
 
 script Specification 
-	property name : "Specification"
+	property class : "Specification"
 	
 	on isSatisfiedBy(candidate)
+		return true
 	end isSatisfiedBy
 	
 	on andSpec(other)
@@ -20,11 +21,11 @@ script Specification
 	
 	on notSpec()
 	end notSpec
-end script
+end script --Specification
 
-script AbstractSpecification
+script DefaultSpecification
 	property parent : Specification
-	property name : "AbstractSpecification"
+	property class : "DefaultSpecification"
 	
 	on andSpec(other)	
 		return makeAndSpecification(me, other)
@@ -42,7 +43,8 @@ end script
 
 on makeAndSpecification(one, other)
 	script AndSpecification
-		property parent : AbstractSpecification
+		property parent : DefaultSpecification
+		property class : "AndSpecification"
 		property oneSpec : one
 		property otherSpec : other
 		property name : "(" & one's name & space & "and" & space & other's name & ")"
@@ -61,7 +63,8 @@ end makeOrSpecification
 
 on makeOrSpecification(one, other)
 	script OrSpecification
-		property parent : AbstractSpecification
+		property parent : DefaultSpecification
+		property class : "OrSpecification"
 		property oneSpec : one
 		property otherSpec : other
 		property name : "(" & one's name & space & "or" & space & other's name & ")"
@@ -76,7 +79,8 @@ end makeOrSpecification
 
 on makeNotSpecification(wrapped)
 	script NotSpecification
-		property parent : AbstractSpecification
+		property parent : DefaultSpecification
+		property class : "NotSpecification"
 		property wrappedSpec : wrapped
 		property name : "not (" & wrapped's name & ")"
 	
